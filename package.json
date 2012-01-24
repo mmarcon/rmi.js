@@ -1,0 +1,20 @@
+{
+  "author": "Massimiliano Marcon <me@marcon.me> (http://marcon.me)",
+  "name": "node.rmi.js",
+  "description": "rmi.js server side for node.js",
+  "keywords": ["websocket", "rmi", "remote method invocation", "socket.io", "rpc", "ajax"],
+  "version": "0.1.0",
+  "engines": {
+    "node": "~0.6.6"
+  },
+  "repository": {
+    "type": "git"
+    "url": "https://github.com/mmarcon/rmi.js.git"
+  },
+  "dependencies": {
+    "socket.io": "0.8.7",
+    "express": "3.0.0alpha1-pre"
+  },
+  "devDependencies": {},
+  "main": "index"
+}
