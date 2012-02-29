@@ -6,5 +6,5 @@
     STUB.foo.remote = true;
     RMIJS.Client(STUB).setEndpoint('http://localhost:8081');
 
-    STUB.foo();
+    STUB.foo().then(function(){console.log(arguments)});
 }());
