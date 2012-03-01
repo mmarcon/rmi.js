@@ -1,22 +1,15 @@
-var express = require('express'),
-    app = express.createServer(),
-    io = require('socket.io').listen(app),
-    rmi = require('rmi.js');
-io.set('log level', 0);
+var rmi = require('../'),
+	express = rmi.express,
+    app = rmi.app;
+
+rmi.listen(app);
 app.use(express.static(__dirname + '/web'));
 
-rmi.handleRoutesFor(app);
-
-rmi.ServerFactory.forImplementation({
+rmi.setImplementation({
     foo: function(){
     	console.log('foo');
         return 'foo';
     }
 });
 
-app.listen(8081);
-
-//And listen for socket.io events
-io.sockets.on('connection', function(socket) {
-    rmi.ServerFactory.getHandler(socket);
-});
+app.listen(process.env.PORT||8081);

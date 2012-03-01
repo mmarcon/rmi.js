@@ -1,11 +1,14 @@
 #!/bin/bash
 
-npm install express socket.io
+export PORT=8081
+CPATH=`pwd`
+cd ..
 
-mkdir -p ../node_modules/rmi.js
-cp -r ../lib ../index.js ../package.json ../node_modules/rmi.js
+npm install -d
 
-trap "{ rm -rf ../node_modules; exit 0; }" EXIT
-echo "Example app is running at http://localhost:8081"
+echo "Example app is running at http://localhost:${PORT}"
 echo "^C to stop"
-node server.js
+
+node ./example/server.js
+
+cd $CPATH
