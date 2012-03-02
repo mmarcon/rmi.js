@@ -6,16 +6,14 @@ Think of Java Remote Method Invocation (RMI) in the JavaScript world.
 
 **RMI.js** takes advantage of Socket.io for exchanging data between client and server.
 
-## Building and using RMI.js
-I am making some changes and some refactoring to **RMI.js**, until I am done the way to build it is with GNU make:
+## Use RMI.js
+With this latest release (**0.1.1**) I added the dependendecies directly to the `package.json` file, therefore a
 
-    mmarcon@wallace:~/personal/rmi.js$ make
+    npm install rmi.js
     
-the Makefile requires an existing installation of node.js to run correctly. Additionally it depends on uglify.js, so before building do make sure you do
-    
-    npm install uglify-js
+should be enough to have the all thing up and running.
 
-The building process concatenates and minifies all the code that is served to the clien in a single compressed JS file. Therefore if you use the most recent version of **RMI.js** the only inclusions that are required in your HTML file are:
+On your HTML files you need to include both socket.io as well as rmi.js:
 
     <script src="/socket.io/socket.io.js"><!-- socket.io --></script>
 	<!--
@@ -25,5 +23,44 @@ The building process concatenates and minifies all the code that is served to th
 	    and minified is delievered to the client
 	-->
 	<script src="/rmi.js"></script>
-	
-Socket.io and Express are still dependencies that have to be installed manually, I am working on getting rid of that step.
+
+On the server side you can do something like this:
+
+    var rmi = require('rmi.js'),
+    	express = rmi.express, //exposes express object
+        app = rmi.app; //exposes express app object
+    
+    rmi.listen(app); //tells RMI.js to listen on the Express app
+                     //this will be no longer necessary in the future
+    app.use(express.static(__dirname + '/web')); //You could, for instance, use Express
+                                                 //to serve your static pages
+    
+    //Set the remote implementation of the JS methods that are exposed on the client side
+    rmi.setImplementation({
+        foo: function(){
+        	console.log('foo');
+            return 'foo';
+        }
+    });
+    
+    //Finally tell express to listen on port 8081
+    app.listen(8081);
+
+
+
+## Building RMI.js yourself from the source
+
+You can use GNU make after you made any change:
+
+    mmarcon@wallace:~/personal/rmi.js$ make
+    
+the Makefile requires an existing installation of node.js to run correctly. Additionally it depends on uglify.js, so before building do make sure you do
+    
+    npm install uglify-js
+
+The building process concatenates and minifies all the code that is served to the client in a single compressed JS file.
+
+## Example
+There is also a very basic example of how to use the all thing, client and server side. To run it just download the source code, cd into the module root directory and do
+
+    make example
