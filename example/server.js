@@ -2,7 +2,6 @@ var rmi = require('../'),
 	express = rmi.express,
     app = rmi.app;
 
-rmi.listen(app);
 app.use(express.static(__dirname + '/web'));
 
 rmi.setImplementation({

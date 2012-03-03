@@ -30,8 +30,6 @@ On the server side you can do something like this:
     	express = rmi.express, //exposes express object
         app = rmi.app; //exposes express app object
     
-    rmi.listen(app); //tells RMI.js to listen on the Express app
-                     //this will be no longer necessary in the future
     app.use(express.static(__dirname + '/web')); //You could, for instance, use Express
                                                  //to serve your static pages
     
