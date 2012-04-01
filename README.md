@@ -62,3 +62,6 @@ The building process concatenates and minifies all the code that is served to th
 There is also a very basic example of how to use the all thing, client and server side. To run it just download the source code, cd into the module root directory and do
 
     make example
+    
+## Additional Information
+The project's website goes down very often: Nodester is a great project but they update the infrastructure quite a lot, and I always forget to check wether the app needs to be restarted. If you are looking for additional information on **RMI.js** you can take a look at this blog post: [http://blog.marcon.me/post/18720214029/remote-method-invocation](http://blog.marcon.me/post/18720214029/remote-method-invocation).
