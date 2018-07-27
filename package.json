@@ -19,8 +19,8 @@
         "url": "https://github.com/mmarcon/rmi.js.git"
     },
     "dependencies": {
-        "socket.io":"0.9.11",
-        "express":"3.0.3"
+        "socket.io":"2.1.1",
+        "express":"4.16.3"
     },
     "devDependencies": {},
     "main": "index"
